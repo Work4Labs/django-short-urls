@@ -28,7 +28,7 @@ globals().update(init_settings(app_name=APP_NAME, debug=DEBUG))
 
 try:
     mongoengine.connect(tz_aware=USE_TZ, **MONGOENGINE)  # pylint: disable=undefined-variable
-except mongoengine.connection.MongoEngineConnectionError, err:  # pragma: no cover
-    logging.error('MongoEngineConnectionError: %s', err)
+except mongoengine.connection.ConnectionFailure, err:  # pragma: no cover
+    logging.error('ConnectionFailure: %s', err)
 
 INSTALLED_APPS = (APP_NAME,)

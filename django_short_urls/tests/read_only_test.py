@@ -58,7 +58,7 @@ class ReadOnlyTestCase(PyW4CTestCase):
 
     def test_process_view_catches_connection_errors(self):
         def raise_write_denied(request):  # pylint: disable=W0613
-            raise mongoengine.connection.MongoEngineConnectionError()
+            raise mongoengine.connection.ConnectionFailure()
 
         status_code = ServiceUnavailableMiddleware(
             get_response=Mock()).process_view(None, raise_write_denied, [], {}).status_code

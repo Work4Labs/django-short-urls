@@ -39,6 +39,6 @@ try:
     mongoengine.connect(host=MONGO_URI, read_preference=ReadPreference.PRIMARY_PREFERRED)
 
     SERVICE_UNAVAILABLE = False
-except mongoengine.connection.MongoEngineConnectionError, err:  # pragma: no cover
-    logging.error('MongoEngineConnectionError: %s', err)
+except mongoengine.connection.ConnectionFailure, err:  # pragma: no cover
+    logging.error('ConnectionFailure: %s', err)
     SERVICE_UNAVAILABLE = True
