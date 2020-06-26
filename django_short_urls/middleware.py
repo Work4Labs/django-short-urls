@@ -41,7 +41,7 @@ class ServiceUnavailableMiddleware(object):  # pylint: disable=too-few-public-me
         """
         try:
             return view_func(request, *view_args, **view_kwargs)
-        except mongoengine.connection.MongoEngineConnectionError as err:
+        except mongoengine.connection.ConnectionFailure as err:
             getLogger('app').error('Database access error: %s', err)
 
             return response_service_unavailable()

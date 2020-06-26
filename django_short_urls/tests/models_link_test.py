@@ -108,7 +108,7 @@ class LinkTestCase(PyW4CTestCase):
 
         _shorten(long_url, prefix=prefix)
 
-        explanation = Link.find_for_prefix_and_long_url(prefix, long_url).explain(False)
+        explanation = Link.find_for_prefix_and_long_url(prefix, long_url).explain()
 
         if 'cursor' in explanation:  # pragma: no cover
             # Mongo 2.x
